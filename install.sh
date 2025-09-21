@@ -3,8 +3,16 @@
 # Check if uv is installed
 if ! command -v uv &>/dev/null; then
     echo "uv is not installed. Installing uv..."
-    curl -LsSf https://astral.sh/uv/install.sh | sh
-    source $HOME/.cargo/env
+    
+    # Try Homebrew first on macOS
+    if [[ "$OSTYPE" == "darwin"* ]] && command -v brew &>/dev/null; then
+        echo "Installing uv via Homebrew..."
+        brew install uv
+    else
+        echo "Installing uv via curl..."
+        curl -LsSf https://astral.sh/uv/install.sh | sh
+        source $HOME/.cargo/env
+    fi
 fi
 
 echo "Using uv to create virtual environment and install exo..."
@@ -49,10 +57,11 @@ echo "1. Activate the virtual environment first:"
 echo "   source .venv/bin/activate"
 echo "   exo"
 echo ""
-echo "2. Use the wrapper script (recommended):"
-echo "   ./exo-wrapper.sh"
+echo "2. Install global wrapper for easy access from anywhere:"
+echo "   ./install-global-exo.sh"
 echo ""
 echo "3. Run directly with full path:"
 echo "   .venv/bin/exo"
 echo ""
-echo "The virtual environment must be activated for the 'exo' command to work."
+echo "For Apple Silicon Macs, consider running ./configure_mlx.sh to optimize GPU memory allocation."
+echo "See README.md for more performance tips."

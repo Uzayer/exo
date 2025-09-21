@@ -90,11 +90,14 @@ The current recommended way to install exo is from source.
 ```sh
 git clone https://github.com/exo-explore/exo.git
 cd exo
-# Install uv if not already installed
+# Install uv if not already installed (choose one method)
+# Option 1: Homebrew (recommended on macOS)
+brew install uv
+# Option 2: Curl installer
 curl -LsSf https://astral.sh/uv/install.sh | sh
 # Install exo with uv
 uv pip install -e .
-# Or use the automated install script
+# Or use the automated install script (handles uv installation automatically)
 source install.sh
 ```
 
@@ -105,8 +108,9 @@ source install.sh
 source .venv/bin/activate
 exo
 
-# Option 2: Use the wrapper script
-./exo-wrapper.sh
+# Option 2: Install global wrapper for easy access from anywhere
+./install-global-exo.sh
+# Then you can run 'exo' from any directory
 
 # Option 3: Run directly with full path
 .venv/bin/exo
