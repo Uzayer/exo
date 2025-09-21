@@ -85,13 +85,39 @@ The current recommended way to install exo is from source.
 
 ### From source
 
+**Recommended: Using uv (faster installation)**
+
+```sh
+git clone https://github.com/exo-explore/exo.git
+cd exo
+# Install uv if not already installed
+curl -LsSf https://astral.sh/uv/install.sh | sh
+# Install exo with uv
+uv pip install -e .
+# Or use the automated install script
+source install.sh
+```
+
+**After installation, to run exo:**
+
+```sh
+# Option 1: Activate virtual environment first (recommended)
+source .venv/bin/activate
+exo
+
+# Option 2: Use the wrapper script
+./exo-wrapper.sh
+
+# Option 3: Run directly with full path
+.venv/bin/exo
+```
+
+**Alternative: Using pip**
 
 ```sh
 git clone https://github.com/exo-explore/exo.git
 cd exo
 pip install -e .
-# alternatively, with venv
-source install.sh
 ```
 
 
@@ -257,6 +283,12 @@ TINYGRAD_DEBUG=2 exo
 
 We use [yapf](https://github.com/google/yapf) to format the code. To format the code, first install the formatting requirements:
 
+**Using uv (recommended):**
+```sh
+uv pip install -e '.[formatting]'
+```
+
+**Using pip:**
 ```sh
 pip3 install -e '.[formatting]'
 ```

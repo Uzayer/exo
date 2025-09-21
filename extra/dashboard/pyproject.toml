@@ -1,0 +1,19 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "exo-dashboard"
+version = "0.0.1"
+description = "Dashboard for exo AI cluster monitoring"
+requires-python = ">=3.12"
+dependencies = [
+    "plotly",
+    "pandas",
+    "requests",
+    "aiohttp",
+    "pygame",
+]
+
+[tool.uv]
+dev-dependencies = []
